@@ -1,6 +1,12 @@
-﻿namespace ListaDeTarefas.Data
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace ListaDeTarefas.Data
 {
-    public class AppDbContext
+    public class AppDbContext : DbContext
     {
+        public AppDbContext(DbContextOptions<AppDbContext> option) : base(option)
+        {
+            
+        }
     }
 }
