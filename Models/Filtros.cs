@@ -5,7 +5,7 @@
         public Filtros(string filtroString)
         {
             FiltroString = filtroString ?? "todos-todos-todos";
-            string[] filtros = FiltroString.Split(',');
+            string[] filtros = FiltroString.Split('-');
 
             CategoriaId = filtros[0];
             Vencimento = filtros[1];

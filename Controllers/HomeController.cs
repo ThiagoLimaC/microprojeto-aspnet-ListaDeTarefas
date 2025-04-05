@@ -54,9 +54,11 @@ namespace ListaDeTarefas.Controllers
                 }
             }
 
+            var tarefas = consulta.OrderBy(t => t.DataDeVencimento).ToList();
 
 
-            return View();
+
+            return View(tarefas);
         }
 
     }
