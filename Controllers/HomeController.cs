@@ -22,7 +22,7 @@ namespace ListaDeTarefas.Controllers
             ViewBag.Filtros = filtros;
             ViewBag.Categorias = _context.Categorias.ToList();
             ViewBag.Status = _context.Statuses.ToList();
-            ViewBag.Vencimento = Filtros.VencimentoValoresFiltro;
+            ViewBag.VencimentoValores = Filtros.VencimentoValoresFiltro;
 
             IQueryable<Tarefa> consulta = _context.Tarefas
 
@@ -59,6 +59,12 @@ namespace ListaDeTarefas.Controllers
 
 
             return View(tarefas);
+        }
+
+        [HttpPost]
+        public IActionResult Filtrar(string[] )
+        {
+
         }
 
     }
