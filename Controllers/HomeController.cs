@@ -61,6 +61,7 @@ namespace ListaDeTarefas.Controllers
             return View(tarefas);
         }
 
+
         public IActionResult Adicionar()
         {
             ViewBag.Categorias = _context.Categorias.ToList();
@@ -92,5 +93,39 @@ namespace ListaDeTarefas.Controllers
             return RedirectToAction("Index", new { ID = id });
         }
 
+
+        [HttpPost]
+        public IActionResult Adicionar(Tarefa tarefa)
+        {
+            if(ModelState.IsValid)
+            {
+                _context.Tarefas.Add(tarefa);
+                _context.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.Categorias = _context.Categorias.ToList();
+                ViewBag.Status = _context.Statuses.ToList();
+
+                return View(tarefa);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult DeletarCompletos(string id)
+        {
+            var paraDeletar = _context.Tarefas.Where(s => s.StatusId == "completo").ToList();
+
+            foreach(var tarefa in paraDeletar)
+            {
+                _context.Tarefas.Remove(tarefa);
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", new { ID = id });
+        }
     }
 }
