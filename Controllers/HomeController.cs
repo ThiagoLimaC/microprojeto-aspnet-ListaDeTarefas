@@ -61,10 +61,35 @@ namespace ListaDeTarefas.Controllers
             return View(tarefas);
         }
 
-        [HttpPost]
-        public IActionResult Filtrar(string[] )
+        public IActionResult Adicionar()
         {
+            ViewBag.Categorias = _context.Categorias.ToList();
+            ViewBag.Status = _context.Statuses.ToList();
 
+            var tarefa = new Tarefa { StatusId = "aberto" };
+
+            return View(tarefa);
+        }
+
+        [HttpPost]
+        public IActionResult Filtrar(string[] filtro)
+        {
+            string id = string.Join('-', filtro);
+            return RedirectToAction("Index", new { id });
+        }
+
+        [HttpPost]
+        public IActionResult MarcarCompleto([FromRoute] string id, Tarefa tarefaSelecionada)
+        {
+            tarefaSelecionada = _context.Tarefas.Find(tarefaSelecionada.Id);
+
+            if (tarefaSelecionada != null)
+            {
+                tarefaSelecionada.StatusId = "completo";
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Index", new { ID = id });
         }
 
     }
