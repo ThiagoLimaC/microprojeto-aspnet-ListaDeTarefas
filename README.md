@@ -55,7 +55,27 @@ O projeto utiliza Entity Framework Core para gerenciar o banco de dados. Certifi
 
 ### Estrutura de Arquivos
 
-ListaDeTarefas/ ├── Controllers/ │   └── HomeController.cs ├── Data/ │   └── AppDbContext.cs ├── Models/ │   ├── Categoria.cs │   ├── Status.cs │   └── Tarefa.cs ├── Views/ │   ├── Home/ │   │   ├── Adicionar.cshtml │   │   └── Index.cshtml │   └── Shared/ │       └── _Layout.cshtml ├── wwwroot/ │   └── css/ │       └── site.css ├── appsettings.json ├── Program.cs └── README.md
+ListaDeTarefas/ 
+	├── Controllers/  
+		└── HomeController.cs 
+	├── Data/    
+	    └── AppDbContext.cs 
+	├── Models/    
+		├── Categoria.cs    
+		├── Status.cs       
+		└── Tarefa.cs    
+	├── Views/   
+		├── Home/                  
+		├── Adicionar.cshtml   
+		│   └── Index.cshtml    
+		└── Shared/                 
+			└── _Layout.cshtml 
+		├── wwwroot/  
+			└── css/      
+				└── site.css 
+		├── appsettings.json 
+		├── Program.cs 
+		└── README.md
 
 ## Créditos
 
